@@ -1,5 +1,7 @@
 # 🍪 👮 Vue Cookie Law
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/apertureless/vue-cookie-law.svg)](https://greenkeeper.io/)
+
 
 [![npm](https://img.shields.io/npm/v/vue-cookie-law.svg)](https://www.npmjs.com/package/vue-cookie-law)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
