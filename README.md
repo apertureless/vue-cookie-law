@@ -1,9 +1,9 @@
 # 🍪 👮 Vue Cookie Law
 
 
-[![codecov](https://codecov.io/gh/jjuszczak/vue-cookie-law/branch/dev/graph/badge.svg)](https://codecov.io/gh/jjuszczak/vue-cookie-law)
 [![npm](https://img.shields.io/npm/v/vue-cookie-law.svg)](https://www.npmjs.com/package/vue-cookie-law)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/apertureless/vue-cookie-law/blob/master/LICENSE)
 
 EU Cookie Law Plugin for Vue.js
 
@@ -11,6 +11,22 @@ EU Cookie Law Plugin for Vue.js
 `yarn add vue-cookie-law -S `
 
 ## 👈 Usage
+
+```javascript
+
+<template>
+  <footer>
+    <cookie-law theme="dark-lime"></cookie-law>
+  </footer>
+</template>
+
+<script>
+  import CookieLaw from 'vue-cookie-law'
+  export default {
+    components: {CookieLaw}
+  }
+</script>
+```
 
 ## Props
 | prop | default | type | description
