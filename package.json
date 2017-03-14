@@ -28,6 +28,7 @@
   "scripts": {
     "purge": "rm -rf dist/",
     "dev": "node build/dev-server.js",
+    "docs": "node build/build.js",
     "build": "npm run build:umd",
     "build:es": "rollup -c",
     "build:umd": "webpack --progress --hide-modules --config  ./build/webpack.release.js",

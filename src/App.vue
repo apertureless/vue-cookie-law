@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <cookie-law></cookie-law>
-    <cookie-law position="top" theme="myown" transition-name="slideFromTop"></cookie-law>
   </div>
 </template>
 
