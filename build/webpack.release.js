@@ -17,12 +17,13 @@ var banner = [
 ].join('\n')
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/components/CookieLaw.vue',
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'vue-cookie-law.js',
-        library: 'VueCookieLaw',
-        libraryTarget: 'umd'
+        library: 'CookieLaw',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
     resolve: {
         extensions: ['.js', '.vue']
@@ -41,7 +42,8 @@ module.exports = {
             options: {
               presets: [
                 ['es2015', { modules: false }]
-              ]
+              ],
+              'plugins': ['transform-runtime', 'transform-es2015-modules-commonjs'],
             }
           }],
           include: [resolve('src'), resolve('test')]
