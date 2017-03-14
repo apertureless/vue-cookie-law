@@ -42,7 +42,7 @@
 
 ### Work Step Example
 - Fork the repository from [apertureless/vue-cookie-law](https://github.com/apertureless/vue-cookie-law) !
-- Create your topic branch from `dev`: `git branch my-new-topic origin/develop`
+- Create your topic branch from `develop`: `git branch my-new-topic origin/develop`
 - Add codes and pass tests !
 - Commit your changes: `git commit -am 'Add some topic'`
 - Push to the branch: `git push origin my-new-topic`
