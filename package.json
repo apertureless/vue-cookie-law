@@ -98,7 +98,7 @@
     "sinon-chai": "^2.8.0",
     "url-loader": "^0.5.7",
     "vue": "^2.2.4",
-    "vue-loader": "^11.1.4",
+    "vue-loader": "^11.2.0",
     "vue-style-loader": "^2.0.4",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.3.0",
