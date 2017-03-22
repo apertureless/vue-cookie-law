@@ -95,7 +95,7 @@
     "sass-loader": "^6.0.3",
     "semver": "^5.3.0",
     "sinon": "^2.0.0",
-    "sinon-chai": "^2.8.0",
+    "sinon-chai": "^2.9.0",
     "url-loader": "^0.5.7",
     "vue": "^2.2.4",
     "vue-loader": "^11.1.4",
