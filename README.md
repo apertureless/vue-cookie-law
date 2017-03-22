@@ -10,7 +10,7 @@ EU Cookie Law Plugin for Vue.js
 📺 [Demo](https://apertureless.github.io/vue-cookie-law/)
 
 ## 🔧  Install
-`yarn add vue-cookie-law -S `
+`yarn add vue-cookie-law`
 
 ## 👈 Usage
 
