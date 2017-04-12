@@ -67,7 +67,7 @@ Please make sure to read the [Issue Reporting Checklist](https://github.com/aper
 
 
 ## :muscle: Contribution
-Please make sure to read the [Contributing Guide](https://github.com/apertureless/vue-cookie-law/blob/develop/CONTRIBUTING.md) before making a pull request.
+Please make sure to read the [Contributing Guide](https://github.com/apertureless/vue-cookie-law/blob/develop/CONTRIBUTING.md) and [Code of Conduct](code-of-conduct.md) before making a pull request.
 
 ## :copyright: License
 
