@@ -33,6 +33,8 @@ EU Cookie Law Plugin for Vue.js
 | prop | default | type | description
 |---|---|---|---|
 | buttonText | 'Got It!' | String | 🔘 Well, its the button text
+| buttonLink|  | String | Link to more infos
+| buttonLinkText| 'More info' | String | Label of link button
 | message | 'This website uses cookies to ensure you get the best experience on our website.' | String | Your message in the content area
 | theme | 'base' | String | Selected theme. You can also create a custom one
 | position | 'bottom' | String | Possible positions are `bottom` or `top`

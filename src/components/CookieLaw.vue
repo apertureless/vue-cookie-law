@@ -2,7 +2,10 @@
   <transition appear :name="transitionName">
     <div class="Cookie" :class="[containerPosition, cookieTheme]" v-if="isOpen">
       <div class="Cookie__content">{{ message }}</div>
-      <div class="Cookie__button" @click="accept">{{ buttonText }}</div>
+      <div class="Cookie__buttons">
+        <a :href="buttonLink" v-if="buttonLink" class="Cookie__button">{{ buttonLinkText }}</a>
+        <div class="Cookie__button" @click="accept">{{ buttonText }}</div>
+      </div>
     </div>
   </transition>
 </template>
@@ -13,6 +16,13 @@
       buttonText: {
         type: String,
         default: 'Got it!'
+      },
+      buttonLink: {
+        type: String
+      },
+      buttonLinkText: {
+        type: String,
+        default: 'More info'
       },
       message: {
         type: String,
@@ -115,7 +125,21 @@
     left: 0;
     right: 0;
   }
+  .Cookie__buttons {
+    display: flex;
+    flex-direction: column;
 
+    > * {
+      margin: rem(5) 0;
+    }
+
+    @include media($sm-up) {
+      flex-direction: row;
+      > * {
+        margin: 0 rem(15);
+      }
+    }
+  }
   .Cookie__button {
     cursor: pointer;
     align-self: center;
@@ -127,7 +151,7 @@
       color: $fontColor;
       padding: 1.250em;
 
-      > .Cookie__button {
+        .Cookie__button {
           background: $buttonBackgroundColor;
           padding: 0.625em 3.125em;
           color: $buttonFontColor;
