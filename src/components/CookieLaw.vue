@@ -77,6 +77,8 @@
 </script>
 
 <style lang="scss">
+  @import "~@nextindex/next-scss/next-scss.scss";
+
   .Cookie {
     position: fixed;
     overflow: hidden;
@@ -86,6 +88,20 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    flex-direction: column;
+
+    > * {
+      margin: rem(15) 0;
+      align-self: center;
+    }
+
+    @include media($sm-up) {
+      flex-flow: row;
+
+      > * {
+        margin: 0;
+      }
+    }
   }
 
   .Cookie--top {
@@ -102,6 +118,7 @@
 
   .Cookie__button {
     cursor: pointer;
+    align-self: center;
   }
 
   @mixin generateTheme($theme, $backgroundColor, $fontColor, $buttonBackgroundColor, $buttonFontColor: #fff, $buttonRadius: 0) {
