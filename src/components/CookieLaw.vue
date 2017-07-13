@@ -1,7 +1,9 @@
 <template>
   <transition appear :name="transitionName">
     <div class="Cookie" :class="[containerPosition, cookieTheme]" v-if="isOpen">
-      <div class="Cookie__content">{{ message }}</div>
+      <div class="Cookie__content">
+        <slot name="message">{{ message }}</slot>
+      </div>
       <div class="Cookie__buttons">
         <a :href="buttonLink" v-if="buttonLink" class="Cookie__button">{{ buttonLinkText }}</a>
         <div class="Cookie__button" @click="accept">{{ buttonText }}</div>

@@ -29,6 +29,18 @@ EU Cookie Law Plugin for Vue.js
 </script>
 ```
 
+## Slots
+
+You can also pass in the message into a named slot. This way you can for example add `<router-link>` and other dynamic content.
+
+```javascript
+<cookie-law>
+  <div slot="message">
+    Here is my message for more info <router-link to="legal-notes">Click here</router-link>
+  </div>
+</cookie-law>
+```
+
 ## Props
 | prop | default | type | description
 |---|---|---|---|
