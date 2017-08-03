@@ -45,8 +45,9 @@ You can also pass in the message into a named slot. This way you can for example
 | prop | default | type | description
 |---|---|---|---|
 | buttonText | 'Got It!' | String | 🔘 Well, its the button text
-| buttonLink|  | String | Link to more infos
-| buttonLinkText| 'More info' | String | Label of link button
+| buttonLink |  | String | Link to more infos
+| buttonLinkText | 'More info' | String | Label of link button
+| buttonClass | 'Cookie__button' | String | Custom class name for buttons
 | message | 'This website uses cookies to ensure you get the best experience on our website.' | String | Your message in the content area
 | theme | 'base' | String | Selected theme. You can also create a custom one
 | position | 'bottom' | String | Possible positions are `bottom` or `top`
