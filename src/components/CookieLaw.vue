@@ -5,8 +5,8 @@
         <slot name="message">{{ message }}</slot>
       </div>
       <div class="Cookie__buttons">
-        <a :href="buttonLink" v-if="buttonLink" class="Cookie__button">{{ buttonLinkText }}</a>
-        <div class="Cookie__button" @click="accept">{{ buttonText }}</div>
+        <a :href="buttonLink" v-if="buttonLink" :class="buttonClass">{{ buttonLinkText }}</a>
+        <div :class="buttonClass" @click="accept">{{ buttonText }}</div>
       </div>
     </div>
   </transition>
@@ -53,6 +53,10 @@
       transitionName: {
         type: String,
         default: 'slideFromBottom'
+      },
+      buttonClass: {
+        type: String,
+        default: 'Cookie__button'
       }
     },
     data () {
