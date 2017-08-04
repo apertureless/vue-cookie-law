@@ -2,10 +2,40 @@
 
 ## [Unreleased](https://github.com/apertureless/vue-cookie-law/tree/HEAD)
 
-[Full Changelog](https://github.com/apertureless/vue-cookie-law/compare/v1.0.2...HEAD)
+[Full Changelog](https://github.com/apertureless/vue-cookie-law/compare/v1.2.0...HEAD)
+
+**Implemented enhancements:**
+
+- Could you make message set as v-html and not {{...}}  [\#20](https://github.com/apertureless/vue-cookie-law/issues/20)
+
+**Merged pull requests:**
+
+- Custom button class [\#23](https://github.com/apertureless/vue-cookie-law/pull/23) ([perkola](https://github.com/perkola))
+
+## [v1.2.0](https://github.com/apertureless/vue-cookie-law/tree/v1.2.0) (2017-07-13)
+[Full Changelog](https://github.com/apertureless/vue-cookie-law/compare/v1.1.0...v1.2.0)
+
+**Implemented enhancements:**
+
+- Add linking possibility [\#17](https://github.com/apertureless/vue-cookie-law/issues/17)
 
 **Closed issues:**
 
+- ReferenceError: document is not defined [\#19](https://github.com/apertureless/vue-cookie-law/issues/19)
+- Feature Request: SSR \(nuxt.js\) Support \(`localStorage is not defined`\) [\#18](https://github.com/apertureless/vue-cookie-law/issues/18)
+
+**Merged pull requests:**
+
+- ✨ Add named slot for cookie message [\#22](https://github.com/apertureless/vue-cookie-law/pull/22) ([apertureless](https://github.com/apertureless))
+- ⬆️ Update dependencies [\#21](https://github.com/apertureless/vue-cookie-law/pull/21) ([apertureless](https://github.com/apertureless))
+
+## [v1.1.0](https://github.com/apertureless/vue-cookie-law/tree/v1.1.0) (2017-06-10)
+[Full Changelog](https://github.com/apertureless/vue-cookie-law/compare/v1.0.2...v1.1.0)
+
+**Closed issues:**
+
+- An in-range update of vue is breaking the build 🚨 [\#15](https://github.com/apertureless/vue-cookie-law/issues/15)
+- An in-range update of vue-template-compiler is breaking the build 🚨 [\#14](https://github.com/apertureless/vue-cookie-law/issues/14)
 - An in-range update of vue-loader is breaking the build 🚨 [\#13](https://github.com/apertureless/vue-cookie-law/issues/13)
 - An in-range update of babel-eslint is breaking the build 🚨 [\#11](https://github.com/apertureless/vue-cookie-law/issues/11)
 - An in-range update of sinon-chai is breaking the build 🚨 [\#9](https://github.com/apertureless/vue-cookie-law/issues/9)
@@ -15,6 +45,7 @@
 
 **Merged pull requests:**
 
+- ⬆️ Update dev dependencies [\#16](https://github.com/apertureless/vue-cookie-law/pull/16) ([apertureless](https://github.com/apertureless))
 - chore\(package\): update vue-loader to version 11.2.0 [\#12](https://github.com/apertureless/vue-cookie-law/pull/12) ([apertureless](https://github.com/apertureless))
 - chore\(package\): update babel-plugin-istanbul to version 4.1.1 [\#10](https://github.com/apertureless/vue-cookie-law/pull/10) ([apertureless](https://github.com/apertureless))
 - chore\(package\): update sinon to version 2.1.0 [\#7](https://github.com/apertureless/vue-cookie-law/pull/7) ([apertureless](https://github.com/apertureless))
