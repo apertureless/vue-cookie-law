@@ -87,6 +87,7 @@
       accept () {
         this.setVisited()
         this.isOpen = false
+        this.$emit('accept')
       }
     }
   }
