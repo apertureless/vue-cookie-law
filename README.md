@@ -53,6 +53,14 @@ You can also pass in the message into a named slot. This way you can for example
 | position | 'bottom' | String | Possible positions are `bottom` or `top`
 | transitionName | 'slideFromBottom' | String | Enter and leave transitions. Currenty supported `slideFromBottom`, `slideFromTop`, `fade`
 
+## Events
+
+The default button will emit an `accept` event you can listen on if the user clicks the button.
+
+```html
+<cookie-law v-on:accept="ThankYouMethod()"/>
+```
+
 ## 💅 Themes
 
 ![Cookie Law Themes](static/cookie-law-themes.png)
