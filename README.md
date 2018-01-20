@@ -76,7 +76,8 @@ If you create your own theme, postfix the class.
 
 ```css
 .Cookie--mytheme {....}
-.Cookie--mytheme > .Cookie__button {....}
+.Cookie--mytheme .Cookie__button {....}
+.Cookie--mytheme div.Cookie__button:hover {....}
 ```
 
 And then pass your theme name to the component.
