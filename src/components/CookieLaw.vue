@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import * as Cookie from 'tiny-cookie'
   export default {
     props: {
       buttonText: {
@@ -61,6 +62,7 @@
     },
     data () {
       return {
+        supportsLocalStorage: true,
         isOpen: false
       }
     },
@@ -73,16 +75,39 @@
       }
     },
     created () {
+      // Check for availability of localStorage
+      try {
+        const test = '__vue-cookielaw-check-localStorage'
+
+        window.localStorage.setItem(test, test)
+        window.localStorage.removeItem(test)
+      } catch (e) {
+        console.error('Local storage is not supported, falling back to cookie use')
+        this.supportsLocalStorage = false
+      }
+
       if (!this.getVisited() === true) {
         this.isOpen = true
       }
     },
     methods: {
       setVisited () {
-        localStorage.setItem('cookie:accepted', true)
+        if (this.supportsLocalStorage) {
+          localStorage.setItem('cookie:accepted', true)
+          console.log('Set using localStorage')
+        } else {
+          Cookie.set('cookie:accepted', true)
+          console.log('Set using cookie')
+        }
       },
       getVisited () {
-        return localStorage.getItem('cookie:accepted')
+        if (this.supportsLocalStorage) {
+          console.log('Get from localStorage')
+          return localStorage.getItem('cookie:accepted')
+        } else {
+          console.log('Get from cookie')
+          return Cookie.get('cookie:accepted')
+        }
       },
       accept () {
         this.setVisited()
