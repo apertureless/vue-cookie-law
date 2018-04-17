@@ -1,5 +1,14 @@
 # Change Log
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/apertureless/vue-cookie-law/compare/v1.4.0...v1.4.1) (2018-04-17)
+
+
+
+# Change Log
+
 ## [Unreleased](https://github.com/apertureless/vue-cookie-law/tree/HEAD)
 
 [Full Changelog](https://github.com/apertureless/vue-cookie-law/compare/v1.2.0...HEAD)
