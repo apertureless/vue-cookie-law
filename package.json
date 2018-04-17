@@ -119,5 +119,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "dependencies": {
+    "tiny-cookie": "^2.1.1"
+  }
 }
