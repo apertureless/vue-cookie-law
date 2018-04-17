@@ -94,18 +94,14 @@
       setVisited () {
         if (this.supportsLocalStorage) {
           localStorage.setItem('cookie:accepted', true)
-          console.log('Set using localStorage')
         } else {
           Cookie.set('cookie:accepted', true)
-          console.log('Set using cookie')
         }
       },
       getVisited () {
         if (this.supportsLocalStorage) {
-          console.log('Get from localStorage')
           return localStorage.getItem('cookie:accepted')
         } else {
-          console.log('Get from cookie')
           return Cookie.get('cookie:accepted')
         }
       },
