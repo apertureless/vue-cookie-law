@@ -5,7 +5,8 @@
         <slot name="message">{{ message }}</slot>
       </div>
       <div class="Cookie__buttons">
-        <a :href="buttonLink" v-if="buttonLink" :class="buttonClass">{{ buttonLinkText }}</a>
+        <a :href="buttonLink" v-if="externalButtonLink" :class="buttonClass">{{ buttonLinkText }}</a>
+        <router-link :to="buttonLink" v-if="internalButtonLink" :class="buttonClass">{{ buttonLinkText }}</router-link>
         <div :class="buttonClass" @click="accept">{{ buttonText }}</div>
       </div>
     </div>
@@ -21,7 +22,8 @@
         default: 'Got it!'
       },
       buttonLink: {
-        type: String
+        type: [String, Object],
+        required: false
       },
       buttonLinkText: {
         type: String,
@@ -72,6 +74,12 @@
       },
       cookieTheme () {
         return `Cookie--${this.theme}`
+      },
+      externalButtonLink () {
+        return typeof this.buttonLink === 'string' && this.buttonLink.length
+      },
+      internalButtonLink () {
+        return typeof this.buttonLink === 'object' && this.buttonLink != null && Object.keys(this.buttonLink).length
       }
     },
     created () {
