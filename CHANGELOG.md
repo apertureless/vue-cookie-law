@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/apertureless/vue-cookie-law/compare/v1.4.1...v1.5.0) (2018-04-22)
+
+
+### Features
+
+* **Core:** Add router-link support ([#35](https://github.com/apertureless/vue-cookie-law/issues/35)) ([9bc1256](https://github.com/apertureless/vue-cookie-law/commit/9bc1256))
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/apertureless/vue-cookie-law/compare/v1.4.0...v1.4.1) (2018-04-17)
 
