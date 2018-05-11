@@ -25,6 +25,12 @@ describe('CookieLaw.vue', () => {
 
     localStorage.clear()
   })
+  it('should have an <a> tag with target="_blank" if buttonLinkNewTab prop is true', () => {
+    const Constructor = Vue.extend(CookieLaw)
+    const vm = new Constructor({ propsData: { buttonLink: 'link', buttonLinkNewTab: true } }).$mount()
+    expect(vm.$el.querySelector('.Cookie__buttons > a').getAttribute('target'))
+      .to.equal('_blank')
+  })
   // it('should set a cookie when localstorage is not available', () => {
   //   const Constructor = Vue.extend(CookieLaw)
   //   const vm = new Constructor().$mount()
