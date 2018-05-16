@@ -84,7 +84,7 @@
     "lodash": "^4.17.4",
     "lolex": "^1.5.2",
     "mocha": "^3.4.2",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.0",
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^2.0.0",
     "ora": "^1.2.0",
