@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/apertureless/vue-cookie-law/compare/v1.5.0...v1.6.0) (2018-05-16)
+
+
+### Features
+
+* **link:** Add posibility to open link in a new tab ([#36](https://github.com/apertureless/vue-cookie-law/issues/36)) ([a505d94](https://github.com/apertureless/vue-cookie-law/commit/a505d94))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/apertureless/vue-cookie-law/compare/v1.4.1...v1.5.0) (2018-04-22)
 
