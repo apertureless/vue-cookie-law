@@ -47,6 +47,7 @@ You can also pass in the message into a named slot. This way you can for example
 | buttonText | 'Got It!' | String | 🔘 Well, its the button text
 | buttonLink |  | String\|Object | Link to more infos. Simple href or a [vue-router](https://github.com/vuejs/vue-router) Location object
 | buttonLinkText | 'More info' | String | Label of link button
+| buttonLinkNewTab | false | Boolean | If true, it opens the link in a new tab/window (href)
 | buttonClass | 'Cookie__button' | String | Custom class name for buttons
 | message | 'This website uses cookies to ensure you get the best experience on our website.' | String | Your message in the content area
 | theme | 'base' | String | Selected theme. You can also create a custom one
