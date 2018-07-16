@@ -97,3 +97,5 @@ Please make sure to read the [Contributing Guide](https://github.com/apertureles
 ## :copyright: License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+<a href="https://www.buymeacoffee.com/xcqjaytbl" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
