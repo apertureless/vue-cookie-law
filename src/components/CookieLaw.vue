@@ -7,7 +7,7 @@
       <div class="Cookie__buttons">
         <a :target="target" :href="buttonLink" v-if="externalButtonLink" :class="buttonClass">{{ buttonLinkText }}</a>
         <router-link :to="buttonLink" v-if="internalButtonLink" :class="buttonClass">{{ buttonLinkText }}</router-link>
-        <div :class="buttonClass" @click="accept">{{ buttonText }}</div>
+        <button :class="buttonClass" @click="accept">{{ buttonText }}</button>
       </div>
     </div>
   </transition>
@@ -199,6 +199,8 @@
           padding: 0.625em 3.125em;
           color: $buttonFontColor;
           border-radius: $buttonRadius;
+          border: 0;
+          font-size: 1em;
 
           &:hover {
             background: darken($buttonBackgroundColor, 10%);
