@@ -64,6 +64,10 @@
       buttonClass: {
         type: String,
         default: 'Cookie__button'
+      },
+      storageName: {
+        type: String,
+        default: 'cookie:accepted'
       }
     },
     data () {
@@ -108,16 +112,16 @@
     methods: {
       setVisited () {
         if (this.supportsLocalStorage) {
-          localStorage.setItem('cookie:accepted', true)
+          localStorage.setItem(this.storageName, true)
         } else {
-          Cookie.set('cookie:accepted', true)
+          Cookie.set(this.storageName, true)
         }
       },
       getVisited () {
         if (this.supportsLocalStorage) {
-          return localStorage.getItem('cookie:accepted')
+          return localStorage.getItem(this.storageName)
         } else {
-          return Cookie.get('cookie:accepted')
+          return Cookie.get(this.storageName)
         }
       },
       accept () {
