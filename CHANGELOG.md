@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/apertureless/vue-cookie-law/compare/v1.6.0...v1.7.0) (2018-10-04)
+
+
+### Bug Fixes
+
+* **button:** Use real button tag to improve accessibility. ([#39](https://github.com/apertureless/vue-cookie-law/issues/39)) ([cbe26ad](https://github.com/apertureless/vue-cookie-law/commit/cbe26ad))
+
+
+### Features
+
+* **interal:** LocalStorage item name as prop ([#41](https://github.com/apertureless/vue-cookie-law/issues/41)) ([26c5266](https://github.com/apertureless/vue-cookie-law/commit/26c5266))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/apertureless/vue-cookie-law/compare/v1.5.0...v1.6.0) (2018-05-16)
 
