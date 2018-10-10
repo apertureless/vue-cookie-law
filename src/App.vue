@@ -10,7 +10,18 @@
       <option value="dark-lime--rounded">Dark Lime Round</option>
       <option value="royal--rounded">Royal Round</option>
     </select>
-    <cookie-law :theme="theme"></cookie-law>
+    <cookie-law :theme="theme">
+      <div slot-scope="props" class="container">
+
+        <button @click="props.accept"><span>I accept</span></button>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, hic?
+        </p>
+
+        <button @click="props.close"><span>Close</span></button>
+      </div>
+
+    </cookie-law>
   </div>
 </template>
 
@@ -44,5 +55,26 @@ select {
   width: 400px;
   height: 40px;
   font-size: 18px;
+}
+
+button {
+  background: rebeccapurple;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 8px 0;
+  transform: skew(-20deg);
+  padding: 0.2rem 1rem;
+}
+
+button span {
+  display: inline-block;
+  transform: skew(20deg);
+}
+
+.container {
+  width: 100%;
+  text-align: center;
 }
 </style>
