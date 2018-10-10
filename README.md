@@ -41,6 +41,26 @@ You can also pass in the message into a named slot. This way you can for example
 </cookie-law>
 ```
 
+## Scoped Slot
+
+For a more complex layout use the scoped slot
+```html
+<cookie-law>
+  <div slot-scope="props">
+    <button class="skew" @click="props.accept"><span>I accept</span></button>
+    <p>
+      This site uses 🍪
+    </p>
+    <button class="skew" @click="props.close"><span>Ignore me</span></button>
+  </div>
+
+</cookie-law>
+```
+| methods | description |
+|---|---|
+| accept | Closes the cookie disclaimer and saves to localStorage |
+| close | Only closes the cookie disclaimer. The disclaimer will reappear on the next page load. |
+
 ## Props
 | prop | default | type | description
 |---|---|---|---|
