@@ -10,15 +10,16 @@
       <option value="dark-lime--rounded">Dark Lime Round</option>
       <option value="royal--rounded">Royal Round</option>
     </select>
+    <cookie-law :theme="theme" position="top" transition-name="fade"></cookie-law>
     <cookie-law :theme="theme">
       <div slot-scope="props" class="container">
 
-        <button @click="props.accept"><span>I accept</span></button>
+        <button class="skew" @click="props.accept"><span>I accept</span></button>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, hic?
         </p>
 
-        <button @click="props.close"><span>Close</span></button>
+        <button class="skew" @click="props.close"><span>Close</span></button>
       </div>
 
     </cookie-law>
@@ -48,7 +49,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
   margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 select {
@@ -57,7 +62,7 @@ select {
   font-size: 18px;
 }
 
-button {
+.skew {
   background: rebeccapurple;
   color: #fff;
   font-size: 0.875rem;
@@ -68,7 +73,7 @@ button {
   padding: 0.2rem 1rem;
 }
 
-button span {
+.skew span {
   display: inline-block;
   transform: skew(20deg);
 }
