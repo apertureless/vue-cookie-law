@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/apertureless/vue-cookie-law/compare/v1.7.0...v1.8.0) (2018-10-21)
+
+
+### Features
+
+* add slot and close method ([#42](https://github.com/apertureless/vue-cookie-law/issues/42)) ([d992481](https://github.com/apertureless/vue-cookie-law/commit/d992481))
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/apertureless/vue-cookie-law/compare/v1.6.0...v1.7.0) (2018-10-04)
 
