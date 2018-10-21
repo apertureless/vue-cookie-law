@@ -1,14 +1,16 @@
 <template>
   <transition appear :name="transitionName">
     <div class="Cookie" :class="[containerPosition, cookieTheme]" v-if="isOpen">
-      <div class="Cookie__content">
-        <slot name="message">{{ message }}</slot>
-      </div>
-      <div class="Cookie__buttons">
-        <a :target="target" :href="buttonLink" v-if="externalButtonLink" :class="buttonClass">{{ buttonLinkText }}</a>
-        <router-link :to="buttonLink" v-if="internalButtonLink" :class="buttonClass">{{ buttonLinkText }}</router-link>
-        <button :class="buttonClass" @click="accept">{{ buttonText }}</button>
-      </div>
+      <slot :accept="accept" :close="close">
+        <div class="Cookie__content">
+          <slot name="message">{{ message }}</slot>
+        </div>
+        <div class="Cookie__buttons">
+          <a :target="target" :href="buttonLink" v-if="externalButtonLink" :class="buttonClass">{{ buttonLinkText }}</a>
+          <router-link :to="buttonLink" v-if="internalButtonLink" :class="buttonClass">{{ buttonLinkText }}</router-link>
+          <button :class="buttonClass" @click="accept">{{ buttonText }}</button>
+        </div>
+      </slot>
     </div>
   </transition>
 </template>
@@ -128,6 +130,10 @@
         this.setVisited()
         this.isOpen = false
         this.$emit('accept')
+      },
+
+      close () {
+        this.isOpen = false
       }
     }
   }
