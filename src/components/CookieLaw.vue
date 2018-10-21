@@ -18,6 +18,7 @@
 <script>
   import * as Cookie from 'tiny-cookie'
   export default {
+    name: 'VueCookieLaw',
     props: {
       buttonText: {
         type: String,
@@ -103,7 +104,7 @@
         window.localStorage.setItem(test, test)
         window.localStorage.removeItem(test)
       } catch (e) {
-        console.error('Local storage is not supported, falling back to cookie use')
+        console.info('Local storage is not supported, falling back to cookie use')
         this.supportsLocalStorage = false
       }
 
