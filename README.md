@@ -60,6 +60,7 @@ For a more complex layout use the scoped slot
 |---|---|
 | accept | Closes the cookie disclaimer and saves to localStorage |
 | close | Only closes the cookie disclaimer. The disclaimer will reappear on the next page load. |
+| open | Show disclaimer if user ignored him |
 
 ## Props
 | prop | default | type | description
