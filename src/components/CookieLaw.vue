@@ -1,7 +1,7 @@
 <template>
   <transition appear :name="transitionName">
     <div class="Cookie" :class="[containerPosition, cookieTheme]" v-if="isOpen">
-      <slot :accept="accept" :close="close">
+      <slot :accept="accept" :close="close" :open="open">
         <div class="Cookie__content">
           <slot name="message">{{ message }}</slot>
         </div>
@@ -132,9 +132,13 @@
         this.isOpen = false
         this.$emit('accept')
       },
-
       close () {
         this.isOpen = false
+      },
+      open () {
+        if (!this.getVisited() === true) {
+          this.isOpen = true
+        }
       }
     }
   }
