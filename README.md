@@ -73,7 +73,8 @@ For a more complex layout use the scoped slot
 | message | 'This website uses cookies to ensure you get the best experience on our website.' | String | Your message in the content area
 | theme | 'base' | String | Selected theme. You can also create a custom one
 | position | 'bottom' | String | Possible positions are `bottom` or `top`
-| transitionName | 'slideFromBottom' | String | Enter and leave transitions. Currenty supported `slideFromBottom`, `slideFromTop`, `fade`
+| transitionName | 'slideFromBottom' | String | Enter and leave transitions. Currently supported `slideFromBottom`, `slideFromTop`, `fade`
+| storageType | 'localStorage' | String | Type of storage, where to store 'cookies:accept': true. Can be `localStorage` (default) or `cookies`. If LocalStorage is unsupported, then used Cookies.
 
 ## Events
 
