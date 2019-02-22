@@ -105,7 +105,7 @@
       target () {
         return this.buttonLinkNewTab ? '_blank' : '_self'
       },
-      canUseLocalStorage() {
+      canUseLocalStorage () {
         return this.storageType === STORAGE_TYPES.local && this.supportsLocalStorage
       }
     },
