@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.10.0](https://github.com/apertureless/vue-cookie-law/compare/v1.9.0...v1.10.0) (2019-03-18)
+
+
+### Bug Fixes
+
+* **build:** Add production env flag ([9dec5cf](https://github.com/apertureless/vue-cookie-law/commit/9dec5cf)), closes [#44](https://github.com/apertureless/vue-cookie-law/issues/44)
+* **style:** Add nowrap to button ([#46](https://github.com/apertureless/vue-cookie-law/issues/46)) ([b155e85](https://github.com/apertureless/vue-cookie-law/commit/b155e85))
+
+
+### Features
+
+* Add storage-type ([#47](https://github.com/apertureless/vue-cookie-law/issues/47)) ([16b14b1](https://github.com/apertureless/vue-cookie-law/commit/16b14b1))
+
+
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/apertureless/vue-cookie-law/compare/v1.8.0...v1.9.0) (2019-02-16)
 
