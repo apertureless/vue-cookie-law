@@ -17,6 +17,12 @@
 
 <script>
   import * as Cookie from 'tiny-cookie'
+
+  const STORAGE_TYPES = {
+    local: 'localStorage',
+    cookies: 'cookies'
+  }
+
   export default {
     name: 'VueCookieLaw',
     props: {
@@ -71,6 +77,10 @@
       storageName: {
         type: String,
         default: 'cookie:accepted'
+      },
+      storageType: {
+        type: String,
+        default: STORAGE_TYPES.local
       }
     },
     data () {
@@ -94,18 +104,23 @@
       },
       target () {
         return this.buttonLinkNewTab ? '_blank' : '_self'
+      },
+      canUseLocalStorage () {
+        return this.storageType === STORAGE_TYPES.local && this.supportsLocalStorage
       }
     },
     created () {
-      // Check for availability of localStorage
-      try {
-        const test = '__vue-cookielaw-check-localStorage'
+      if (this.storageType === STORAGE_TYPES.local) {
+        // Check for availability of localStorage
+        try {
+          const test = '__vue-cookielaw-check-localStorage'
 
-        window.localStorage.setItem(test, test)
-        window.localStorage.removeItem(test)
-      } catch (e) {
-        console.info('Local storage is not supported, falling back to cookie use')
-        this.supportsLocalStorage = false
+          window.localStorage.setItem(test, test)
+          window.localStorage.removeItem(test)
+        } catch (e) {
+          console.info('Local storage is not supported, falling back to cookie use')
+          this.supportsLocalStorage = false
+        }
       }
 
       if (!this.getVisited() === true) {
@@ -114,14 +129,14 @@
     },
     methods: {
       setVisited () {
-        if (this.supportsLocalStorage) {
+        if (this.canUseLocalStorage) {
           localStorage.setItem(this.storageName, true)
         } else {
           Cookie.set(this.storageName, true)
         }
       },
       getVisited () {
-        if (this.supportsLocalStorage) {
+        if (this.canUseLocalStorage) {
           return localStorage.getItem(this.storageName)
         } else {
           return Cookie.get(this.storageName)
