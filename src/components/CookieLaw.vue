@@ -201,6 +201,7 @@
   .Cookie__button {
     cursor: pointer;
     align-self: center;
+    white-space: nowrap;
   }
 
   @mixin generateTheme($theme, $backgroundColor, $fontColor, $buttonBackgroundColor, $buttonFontColor: #fff, $buttonRadius: 0) {
