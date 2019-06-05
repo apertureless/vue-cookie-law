@@ -1,281 +1,289 @@
 <template>
-  <transition appear :name="transitionName">
-    <div class="Cookie" :class="[containerPosition, cookieTheme]" v-if="isOpen">
-      <slot :accept="accept" :close="close" :open="open">
-        <div class="Cookie__content">
-          <slot name="message">{{ message }}</slot>
-        </div>
-        <div class="Cookie__buttons">
-          <a :target="target" :href="buttonLink" v-if="externalButtonLink" :class="buttonClass">{{ buttonLinkText }}</a>
-          <router-link :to="buttonLink" v-if="internalButtonLink" :class="buttonClass">{{ buttonLinkText }}</router-link>
-          <button :class="buttonClass" @click="accept">{{ buttonText }}</button>
-        </div>
-      </slot>
-    </div>
-  </transition>
+<transition appear :name="transitionName">
+  <div class="Cookie" :class="[containerPosition, cookieTheme]" v-if="isOpen">
+    <slot :accept="accept" :close="close" :open="open">
+      <div class="Cookie__content">
+        <slot name="message">{{ message }}</slot>
+      </div>
+      <div class="Cookie__buttons">
+        <a :target="target" :href="buttonLink" v-if="externalButtonLink" :class="buttonClass">{{ buttonLinkText }}</a>
+        <router-link :to="buttonLink" v-if="internalButtonLink" :class="buttonClass">{{ buttonLinkText }}</router-link>
+        <button :class="buttonClass" @click="accept">{{ buttonText }}</button>
+      </div>
+    </slot>
+  </div>
+</transition>
 </template>
 
 <script>
-  import * as Cookie from 'tiny-cookie'
+import * as Cookie from 'tiny-cookie'
 
-  const STORAGE_TYPES = {
-    local: 'localStorage',
-    cookies: 'cookies'
-  }
+const STORAGE_TYPES = {
+  local: 'localStorage',
+  cookies: 'cookies'
+}
 
-  export default {
-    name: 'VueCookieLaw',
-    props: {
-      buttonText: {
-        type: String,
-        default: 'Got it!'
-      },
-      buttonLink: {
-        type: [String, Object],
-        required: false
-      },
-      buttonLinkText: {
-        type: String,
-        default: 'More info'
-      },
-      buttonLinkNewTab: {
-        type: Boolean,
-        default: false
-      },
-      message: {
-        type: String,
-        default: 'This website uses cookies to ensure you get the best experience on our website.'
-      },
-      theme: {
-        type: String,
-        default: 'base'
-      },
-      /**
+export default {
+  name: 'VueCookieLaw',
+  props: {
+    buttonText: {
+      type: String,
+      default: 'Got it!'
+    },
+    buttonLink: {
+      type: [String, Object],
+      required: false
+    },
+    buttonLinkText: {
+      type: String,
+      default: 'More info'
+    },
+    buttonLinkNewTab: {
+      type: Boolean,
+      default: false
+    },
+    message: {
+      type: String,
+      default: 'This website uses cookies to ensure you get the best experience on our website.'
+    },
+    theme: {
+      type: String,
+      default: 'base'
+    },
+    /**
        * Cookie Container position
        * bottom, top
        * @type {Object}
        */
-      position: {
-        type: String,
-        default: 'bottom'
-      },
-      /**
+    position: {
+      type: String,
+      default: 'bottom'
+    },
+    /**
        * Transition name has following possibilities
        * slideFromBottom
        * slideFromTop
        * fade
        * @type {Object}
        */
-      transitionName: {
-        type: String,
-        default: 'slideFromBottom'
-      },
-      buttonClass: {
-        type: String,
-        default: 'Cookie__button'
-      },
-      storageName: {
-        type: String,
-        default: 'cookie:accepted'
-      },
-      storageType: {
-        type: String,
-        default: STORAGE_TYPES.local
-      }
+    transitionName: {
+      type: String,
+      default: 'slideFromBottom'
     },
-    data () {
-      return {
-        supportsLocalStorage: true,
-        isOpen: false
-      }
+    buttonClass: {
+      type: String,
+      default: 'Cookie__button'
     },
-    computed: {
-      containerPosition () {
-        return `Cookie--${this.position}`
-      },
-      cookieTheme () {
-        return `Cookie--${this.theme}`
-      },
-      externalButtonLink () {
-        return typeof this.buttonLink === 'string' && this.buttonLink.length
-      },
-      internalButtonLink () {
-        return typeof this.buttonLink === 'object' && this.buttonLink != null && Object.keys(this.buttonLink).length
-      },
-      target () {
-        return this.buttonLinkNewTab ? '_blank' : '_self'
-      },
-      canUseLocalStorage () {
-        return this.storageType === STORAGE_TYPES.local && this.supportsLocalStorage
-      }
+    storageName: {
+      type: String,
+      default: 'cookie:accepted'
     },
-    created () {
-      if (this.storageType === STORAGE_TYPES.local) {
-        // Check for availability of localStorage
-        try {
-          const test = '__vue-cookielaw-check-localStorage'
+    storageType: {
+      type: String,
+      default: STORAGE_TYPES.local
+    }
+  },
+  data () {
+    return {
+      supportsLocalStorage: true,
+      isOpen: false
+    }
+  },
+  computed: {
+    containerPosition () {
+      return `Cookie--${this.position}`
+    },
+    cookieTheme () {
+      return `Cookie--${this.theme}`
+    },
+    externalButtonLink () {
+      return typeof this.buttonLink === 'string' && this.buttonLink.length
+    },
+    internalButtonLink () {
+      return typeof this.buttonLink === 'object' && this.buttonLink != null && Object.keys(this.buttonLink).length
+    },
+    target () {
+      return this.buttonLinkNewTab ? '_blank' : '_self'
+    },
+    canUseLocalStorage () {
+      return this.storageType === STORAGE_TYPES.local && this.supportsLocalStorage
+    }
+  },
+  created () {
+    if (this.storageType === STORAGE_TYPES.local) {
+      // Check for availability of localStorage
+      try {
+        const test = '__vue-cookielaw-check-localStorage'
 
-          window.localStorage.setItem(test, test)
-          window.localStorage.removeItem(test)
-        } catch (e) {
-          console.info('Local storage is not supported, falling back to cookie use')
-          this.supportsLocalStorage = false
-        }
+        window.localStorage.setItem(test, test)
+        window.localStorage.removeItem(test)
+      } catch (e) {
+        console.info('Local storage is not supported, falling back to cookie use')
+        this.supportsLocalStorage = false
       }
+    }
 
+    if (!this.getVisited() === true) {
+      this.isOpen = true
+    }
+  },
+  methods: {
+    setVisited () {
+      if (this.canUseLocalStorage) {
+        localStorage.setItem(this.storageName, true)
+      } else {
+        Cookie.set(this.storageName, true)
+      }
+    },
+    getVisited () {
+      if (this.canUseLocalStorage) {
+        return localStorage.getItem(this.storageName)
+      } else {
+        return Cookie.get(this.storageName)
+      }
+    },
+    resetVisited () {
+      // remove cookie or local storage
+      if (this.canUseLocalStorage) {
+        localStorage.removeItem(this.storageName)
+      } else {
+        Cookie.remove(this.storageName)
+      }
+    },
+    accept () {
+      this.setVisited()
+      this.isOpen = false
+      this.$emit('accept')
+    },
+    close () {
+      this.isOpen = false
+    },
+    open () {
       if (!this.getVisited() === true) {
         this.isOpen = true
       }
-    },
-    methods: {
-      setVisited () {
-        if (this.canUseLocalStorage) {
-          localStorage.setItem(this.storageName, true)
-        } else {
-          Cookie.set(this.storageName, true)
-        }
-      },
-      getVisited () {
-        if (this.canUseLocalStorage) {
-          return localStorage.getItem(this.storageName)
-        } else {
-          return Cookie.get(this.storageName)
-        }
-      },
-      accept () {
-        this.setVisited()
-        this.isOpen = false
-        this.$emit('accept')
-      },
-      close () {
-        this.isOpen = false
-      },
-      open () {
-        if (!this.getVisited() === true) {
-          this.isOpen = true
-        }
-      }
     }
   }
+}
 </script>
 
 <style lang="scss">
-  @import "~@nextindex/next-scss/next-scss.scss";
+@import "~@nextindex/next-scss/next-scss.scss";
 
-  .Cookie {
-    position: fixed;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 9999;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-direction: column;
+.Cookie {
+  position: fixed;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 9999;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-direction: column;
 
-    > * {
-      margin: rem(15) 0;
-      align-self: center;
-    }
-
-    @include media($sm-up) {
-      flex-flow: row;
-
-      > * {
-        margin: 0;
-      }
-    }
-  }
-
-  .Cookie--top {
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .Cookie--bottom {
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  .Cookie__buttons {
-    display: flex;
-    flex-direction: column;
-
-    > * {
-      margin: rem(5) 0;
-    }
-
-    @include media($sm-up) {
-      flex-direction: row;
-      > * {
-        margin: 0 rem(15);
-      }
-    }
-  }
-  .Cookie__button {
-    cursor: pointer;
+  > * {
+    margin: rem(15) 0;
     align-self: center;
-    white-space: nowrap;
   }
 
-  @mixin generateTheme($theme, $backgroundColor, $fontColor, $buttonBackgroundColor, $buttonFontColor: #fff, $buttonRadius: 0) {
-    .Cookie--#{$theme} {
-      background: $backgroundColor;
-      color: $fontColor;
-      padding: 1.250em;
+  @include media($sm-up) {
+    flex-flow: row;
 
-        .Cookie__button {
-          background: $buttonBackgroundColor;
-          padding: 0.625em 3.125em;
-          color: $buttonFontColor;
-          border-radius: $buttonRadius;
-          border: 0;
-          font-size: 1em;
+    > * {
+      margin: 0;
+    }
+  }
+}
 
-          &:hover {
-            background: darken($buttonBackgroundColor, 10%);
-          }
+.Cookie--top {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.Cookie--bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.Cookie__buttons {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    margin: rem(5) 0;
+  }
+
+  @include media($sm-up) {
+    flex-direction: row;
+    > * {
+      margin: 0 rem(15);
+    }
+  }
+}
+.Cookie__button {
+  cursor: pointer;
+  align-self: center;
+  white-space: nowrap;
+}
+
+@mixin generateTheme($theme, $backgroundColor, $fontColor, $buttonBackgroundColor, $buttonFontColor: #fff, $buttonRadius: 0) {
+  .Cookie--#{$theme} {
+    background: $backgroundColor;
+    color: $fontColor;
+    padding: 1.250em;
+
+    .Cookie__button {
+      background: $buttonBackgroundColor;
+      padding: 0.625em 3.125em;
+      color: $buttonFontColor;
+      border-radius: $buttonRadius;
+      border: 0;
+      font-size: 1em;
+
+      &:hover {
+        background: darken($buttonBackgroundColor, 10%);
       }
     }
   }
+}
 
-  @include generateTheme('base', #F1F1F1, #232323, #97D058);
-  @include generateTheme('base--rounded', #F1F1F1, #232323, #97D058, #fff, 20px);
-  @include generateTheme('blood-orange', #424851, #fff, #E76A68);
-  @include generateTheme('blood-orange--rounded', #424851, #fff, #E76A68, #fff, 20px);
-  @include generateTheme('dark-lime', #424851, #fff, #97D058);
-  @include generateTheme('dark-lime--rounded', #424851, #fff, #97D058, #fff, 20px);
-  @include generateTheme('royal', #FBC227, #232323, #726CEA, #fff);
-  @include generateTheme('royal--rounded', #FBC227, #232323, #726CEA, #fff, 20px);
+@include generateTheme('base', #F1F1F1, #232323, #97D058);
+@include generateTheme('base--rounded', #F1F1F1, #232323, #97D058, #fff, 20px);
+@include generateTheme('blood-orange', #424851, #fff, #E76A68);
+@include generateTheme('blood-orange--rounded', #424851, #fff, #E76A68, #fff, 20px);
+@include generateTheme('dark-lime', #424851, #fff, #97D058);
+@include generateTheme('dark-lime--rounded', #424851, #fff, #97D058, #fff, 20px);
+@include generateTheme('royal', #FBC227, #232323, #726CEA, #fff);
+@include generateTheme('royal--rounded', #FBC227, #232323, #726CEA, #fff, 20px);
 
-  .slideFromTop-enter, .slideFromTop-leave-to {
-    transform: translate(0px, -12.500em);
-  }
+.slideFromTop-enter, .slideFromTop-leave-to {
+  transform: translate(0px, -12.500em);
+}
 
-  .slideFromTop-enter-to, .slideFromTop-leave {
-    transform: translate(0px, 0px);
-  }
+.slideFromTop-enter-to, .slideFromTop-leave {
+  transform: translate(0px, 0px);
+}
 
-  .slideFromBottom-enter, .slideFromBottom-leave-to {
-    transform: translate(0px, 12.500em);
-  }
+.slideFromBottom-enter, .slideFromBottom-leave-to {
+  transform: translate(0px, 12.500em);
+}
 
-  .slideFromBottom-enter-to, .slideFromBottom-leave {
-    transform: translate(0px, 0px);
-  }
+.slideFromBottom-enter-to, .slideFromBottom-leave {
+  transform: translate(0px, 0px);
+}
 
-  .slideFromBottom-enter-active,
-  .slideFromBottom-leave-active,
-  .slideFromTop-enter-active,
-  .slideFromTop-leave-active, {
-    transition: transform .4s ease-in;
-  }
+.slideFromBottom-enter-active,
+.slideFromBottom-leave-active,
+.slideFromTop-enter-active,
+.slideFromTop-leave-active, {
+  transition: transform .4s ease-in;
+}
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0
-  }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
 </style>
