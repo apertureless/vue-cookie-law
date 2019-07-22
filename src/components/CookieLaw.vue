@@ -1,7 +1,7 @@
 <template>
   <transition appear :name="transitionName">
     <div class="Cookie" :class="[containerPosition, cookieTheme]" v-if="isOpen">
-      <slot :accept="accept" :close="close" :open="open">
+      <slot :accept="accept" :close="close" :decline="decline" :open="open">
         <div class="Cookie__content">
           <slot name="message">{{ message }}</slot>
         </div>
@@ -81,6 +81,10 @@
       storageType: {
         type: String,
         default: STORAGE_TYPES.local
+      },
+      cookiesExpiration: {
+        type: String,
+        default: '1Y'
       }
     },
     data () {
@@ -132,7 +136,21 @@
         if (this.canUseLocalStorage) {
           localStorage.setItem(this.storageName, true)
         } else {
-          Cookie.set(this.storageName, true)
+          Cookie.set(this.storageName, true, { expires: this.cookiesExpiration })
+        }
+      },
+      setAccepted () {
+        if (this.canUseLocalStorage) {
+          localStorage.setItem('cookie:all', true)
+        } else {
+          Cookie.set('cookie:all', true, { expires: this.cookiesExpiration })
+        }
+      },
+      setDeclined () {
+        if (this.canUseLocalStorage) {
+          localStorage.setItem('cookie:all', false)
+        } else {
+          Cookie.set('cookie:all', false, { expires: this.cookiesExpiration })
         }
       },
       getVisited () {
@@ -144,11 +162,19 @@
       },
       accept () {
         this.setVisited()
+        this.setAccepted()
         this.isOpen = false
         this.$emit('accept')
       },
       close () {
         this.isOpen = false
+        this.$emit('close')
+      },
+      decline () {
+        this.setVisited()
+        this.setDeclined()
+        this.isOpen = false
+        this.$emit('decline')
       },
       open () {
         if (!this.getVisited() === true) {
