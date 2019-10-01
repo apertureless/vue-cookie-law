@@ -46,7 +46,7 @@ You can also pass in the message into a named slot. This way you can for example
 
 ## Scoped Slot
 
-For a more complex layout use the scoped slot
+For a more complex layout use the **scoped slot**
 ```html
 <cookie-law>
   <div slot-scope="props">
