@@ -81,6 +81,11 @@
       storageType: {
         type: String,
         default: STORAGE_TYPES.local
+      },
+      cookieOptions: {
+        type: Object,
+        default: () => {},
+        required: false
       }
     },
     data () {
@@ -132,7 +137,7 @@
         if (this.canUseLocalStorage) {
           localStorage.setItem(this.storageName, true)
         } else {
-          Cookie.set(this.storageName, true)
+          Cookie.set(this.storageName, true, this.cookieOptions)
         }
       },
       getVisited () {
