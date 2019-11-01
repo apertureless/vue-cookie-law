@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.11.0](https://github.com/apertureless/vue-cookie-law/compare/v1.10.0...v1.11.0) (2019-11-01)
+
+
+### Features
+
+* Add prop to set cookie options ([#54](https://github.com/apertureless/vue-cookie-law/issues/54)) ([a42cc23](https://github.com/apertureless/vue-cookie-law/commit/a42cc23))
 
 # [1.10.0](https://github.com/apertureless/vue-cookie-law/compare/v1.9.0...v1.10.0) (2019-03-18)
 
