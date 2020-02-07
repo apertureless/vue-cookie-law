@@ -8,6 +8,7 @@
         <div class="Cookie__buttons">
           <a :target="target" :href="buttonLink" v-if="externalButtonLink" :class="buttonClass">{{ buttonLinkText }}</a>
           <router-link :to="buttonLink" v-if="internalButtonLink" :class="buttonClass">{{ buttonLinkText }}</router-link>
+          <button v-if="buttonDecline" :class="buttonDeclineClass" @click="decline">{{ buttonDeclineText }}</button>
           <button :class="buttonClass" @click="accept">{{ buttonText }}</button>
         </div>
       </slot>
@@ -29,6 +30,14 @@
       buttonText: {
         type: String,
         default: 'Got it!'
+      },
+      buttonDecline: {
+        type: Boolean,
+        default: false
+      },
+      buttonDeclineText: {
+        type: String,
+        default: 'Decline'
       },
       buttonLink: {
         type: [String, Object],
@@ -74,6 +83,10 @@
         type: String,
         default: 'Cookie__button'
       },
+      buttonDeclineClass: {
+        type: String,
+        default: 'Cookie__declineButton'
+      },
       storageName: {
         type: String,
         default: 'cookie:accepted'
@@ -85,7 +98,6 @@
       cookieOptions: {
         type: Object,
         default: () => {
-          expires: '1Y'
         },
         required: false
       }
@@ -139,21 +151,21 @@
         if (this.canUseLocalStorage) {
           localStorage.setItem(this.storageName, true)
         } else {
-          Cookie.set(this.storageName, true, { expires: this.cookiesExpiration })
+          Cookie.set(this.storageName, true, { ...this.cookieOptions, expires: '1Y' })
         }
       },
       setAccepted () {
         if (this.canUseLocalStorage) {
           localStorage.setItem('cookie:all', true)
         } else {
-          Cookie.set('cookie:all', true, this.cookieOptions)
+          Cookie.set('cookie:all', true, { ...this.cookieOptions, expires: '1Y' })
         }
       },
       setDeclined () {
         if (this.canUseLocalStorage) {
           localStorage.setItem('cookie:all', false)
         } else {
-          Cookie.set('cookie:all', false, this.cookieOptions)
+          Cookie.set('cookie:all', false, { ...this.cookieOptions, expires: '1Y' })
         }
       },
       getVisited () {
@@ -248,14 +260,20 @@
     white-space: nowrap;
   }
 
+  .Cookie__declineButton {
+    cursor: pointer;
+    align-self: center;
+    white-space: nowrap;
+  }
+
   @mixin generateTheme($theme, $backgroundColor, $fontColor, $buttonBackgroundColor, $buttonFontColor: #fff, $buttonRadius: 0) {
     .Cookie--#{$theme} {
       background: $backgroundColor;
       color: $fontColor;
       padding: 1.250em;
 
-        .Cookie__button {
-          background: $buttonBackgroundColor;
+      .Cookie__button {
+          background: darken($buttonBackgroundColor, 20%);
           padding: 0.625em 3.125em;
           color: $buttonFontColor;
           border-radius: $buttonRadius;
@@ -264,6 +282,18 @@
 
           &:hover {
             background: darken($buttonBackgroundColor, 10%);
+          }
+      }
+      .Cookie__declineButton {
+          background: transparent;
+          padding: 0.625em 3.125em;
+          color: darken($backgroundColor, 50%);
+          border-radius: $buttonRadius;
+          border: 0;
+          font-size: 1em;
+
+          &:hover {
+            background: darken($backgroundColor, 15%);
           }
       }
     }
