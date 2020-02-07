@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import CookieLaw from '@/components/CookieLaw'
-// import * as Cookie from 'tiny-cookie'
+import * as Cookie from 'tiny-cookie'
 
 describe('CookieLaw.vue', () => {
   it('should render correct contents', () => {
@@ -30,6 +30,32 @@ describe('CookieLaw.vue', () => {
     const vm = new Constructor({ propsData: { buttonLink: 'link', buttonLinkNewTab: true } }).$mount()
     expect(vm.$el.querySelector('.Cookie__buttons > a').getAttribute('target'))
       .to.equal('_blank')
+  })
+  it('should set cookie when domain prop is not set', () => {
+    const Constructor = Vue.extend(CookieLaw)
+    const vm = new Constructor({ propsData: { storageType: 'cookies' } }).$mount()
+
+    expect(Cookie.get('cookie:accepted')).to.equal(null)
+
+    vm.$el.querySelector('.Cookie__button').click()
+
+    expect(Cookie.get('cookie:accepted')).to.equal('true')
+
+    Cookie.remove('cookie:accepted')
+  })
+  it('should set cookie when domain prop set', () => {
+    const Constructor = Vue.extend(CookieLaw)
+    const vm = new Constructor({
+      propsData: { storageType: 'cookies', cookieOptions: { domain: 'localhost' } }
+    }).$mount()
+
+    expect(Cookie.get('cookie:accepted')).to.equal(null)
+
+    vm.$el.querySelector('.Cookie__button').click()
+
+    expect(Cookie.get('cookie:accepted')).to.equal('true')
+
+    Cookie.remove('cookie:accepted', { domain: 'localhost' })
   })
   // it('should set a cookie when localstorage is not available', () => {
   //   const Constructor = Vue.extend(CookieLaw)

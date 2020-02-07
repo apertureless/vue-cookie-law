@@ -46,7 +46,7 @@ You can also pass in the message into a named slot. This way you can for example
 
 ## Scoped Slot
 
-For a more complex layout use the scoped slot
+For a more complex layout use the **scoped slot**
 ```html
 <cookie-law>
   <div slot-scope="props">
@@ -77,7 +77,9 @@ For a more complex layout use the scoped slot
 | theme | 'base' | String | Selected theme. You can also create a custom one
 | position | 'bottom' | String | Possible positions are `bottom` or `top`
 | transitionName | 'slideFromBottom' | String | Enter and leave transitions. Currently supported `slideFromBottom`, `slideFromTop`, `fade`
+| storageName | 'localStorage' | String | Name for the localStorage / cookie name. Defaults to `cookie:accepted`
 | storageType | 'localStorage' | String | Type of storage, where to store 'cookies:accept': true. Can be `localStorage` (default) or `cookies`. If LocalStorage is unsupported, then used Cookies.
+| cookieOptions | {} | Object | (Optional) The cookieOptions parameter is an object. And its property can be a valid cookie option, such as `path`, `domain`, `expires` / `max-age`, `samesite` or `secure`. See [tiny-cookie docs](https://github.com/Alex1990/tiny-cookie#setkey-value-options) for details.
 | buttonDecline | false | Boolean | Display decline button
 | buttonDeclineText | 'Decline' | String | 🔘Decline button text
 | buttonDeclineClass | 'Cookie__declineButton' | String | Custom class name for decline button
