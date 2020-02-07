@@ -272,7 +272,7 @@
       padding: 1.250em;
 
       .Cookie__button {
-          background: darken($buttonBackgroundColor, 20%);
+          background: $buttonBackgroundColor;
           padding: 0.625em 3.125em;
           color: $buttonFontColor;
           border-radius: $buttonRadius;
