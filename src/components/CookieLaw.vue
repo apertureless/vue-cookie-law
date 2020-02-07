@@ -82,9 +82,12 @@
         type: String,
         default: STORAGE_TYPES.local
       },
-      cookiesExpiration: {
-        type: String,
-        default: '1Y'
+      cookieOptions: {
+        type: Object,
+        default: () => {
+          expires: '1Y'
+        },
+        required: false
       }
     },
     data () {
@@ -143,14 +146,14 @@
         if (this.canUseLocalStorage) {
           localStorage.setItem('cookie:all', true)
         } else {
-          Cookie.set('cookie:all', true, { expires: this.cookiesExpiration })
+          Cookie.set('cookie:all', true, this.cookieOptions)
         }
       },
       setDeclined () {
         if (this.canUseLocalStorage) {
           localStorage.setItem('cookie:all', false)
         } else {
-          Cookie.set('cookie:all', false, { expires: this.cookiesExpiration })
+          Cookie.set('cookie:all', false, this.cookieOptions)
         }
       },
       getVisited () {
