@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/apertureless/vue-cookie-law/compare/v1.11.0...v1.12.0) (2020-02-14)
+
+
+### Features
+
+* Add decline button ([#64](https://github.com/apertureless/vue-cookie-law/issues/64)) ([6bab627](https://github.com/apertureless/vue-cookie-law/commit/6bab62798411eb0c934c8c076f2b78ba45c7e770))
+
 ## [1.11.0](https://github.com/apertureless/vue-cookie-law/compare/v1.10.0...v1.11.0) (2019-11-01)
 
 
