@@ -216,6 +216,15 @@
         this.isOpen = false
         this.$emit('decline')
       },
+      revoke () {
+        if (this.canUseLocalStorage) {
+          localStorage.removeItem(this.storageName)
+        } else {
+          Cookie.remove(this.storageName)
+        }
+        this.isOpen = true
+        this.$emit('revoke')
+      },
       open () {
         if (!this.getVisited() === true) {
           this.isOpen = true
