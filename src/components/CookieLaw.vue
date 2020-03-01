@@ -146,7 +146,7 @@
       }
     },
     mounted () {
-      if (this.IsAccepted() === true) {
+      if (this.isAccepted() === true) {
         this.$emit('accept')
       }
     },
@@ -186,7 +186,7 @@
 
         return visited
       },
-      IsAccepted () {
+      isAccepted () {
         let accepted = false
         if (this.canUseLocalStorage) {
           accepted = localStorage.getItem('cookie:all')
