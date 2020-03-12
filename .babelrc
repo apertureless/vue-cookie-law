@@ -1,14 +1,9 @@
 {
-  "presets": [
-    ["env", { "modules": false }],
-    "stage-2"
-  ],
-  "plugins": ["transform-runtime", "transform-es2015-modules-commonjs"],
-  "comments": false,
   "env": {
     "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": [ "istanbul" ]
+      "presets": [
+        ["babel-preset-env", { "targets": { "node": "current" }}]
+      ]
     }
   }
 }
