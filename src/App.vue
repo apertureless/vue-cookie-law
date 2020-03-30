@@ -14,12 +14,12 @@
     <cookie-law :theme="theme">
       <div slot-scope="props" class="container">
 
-        <button class="skew" @click="props.accept"><span>I accept</span></button>
+        <button class="Cookie__button" @click="props.accept"><span>I accept</span></button>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, hic?
         </p>
 
-        <button class="skew" @click="props.close"><span>Close</span></button>
+        <button class="Cookie__button" @click="props.close"><span>Close</span></button>
       </div>
 
     </cookie-law>
@@ -60,22 +60,6 @@ select {
   width: 400px;
   height: 40px;
   font-size: 18px;
-}
-
-.skew {
-  background: rebeccapurple;
-  color: #fff;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-radius: 8px 0;
-  transform: skew(-20deg);
-  padding: 0.2rem 1rem;
-}
-
-.skew span {
-  display: inline-block;
-  transform: skew(20deg);
 }
 
 .container {
