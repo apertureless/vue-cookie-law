@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/apertureless/vue-cookie-law/compare/v1.12.0...v1.13.0) (2020-03-30)
+
+
+### Features
+
+* add is valid and revoke methods ([#65](https://github.com/apertureless/vue-cookie-law/issues/65)) ([f5d23c9](https://github.com/apertureless/vue-cookie-law/commit/f5d23c9cbee990371566d892d3287262e048a614))
+
 ## [1.12.0](https://github.com/apertureless/vue-cookie-law/compare/v1.11.0...v1.12.0) (2020-02-14)
 
 
