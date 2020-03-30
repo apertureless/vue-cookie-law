@@ -4,7 +4,10 @@ const path = require('path');
 const webpack = require('webpack');
 const npmCfg = require('../package.json');
 const projectRoot = path.resolve(__dirname, '../');
-var vueLoaderConfig = require('./vue-loader.conf')
+var vueLoaderConfig = require('./vue-loader.conf');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+var utils = require('./utils');
+var config = require('../config')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -17,6 +20,10 @@ var banner = [
 ].join('\n')
 
 module.exports = {
+    mode: "production",
+    optimization: {
+      minimize: false,
+    },
     entry: './src/components/CookieLaw.vue',
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -41,17 +48,21 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [
-                ['es2015', { modules: false }]
+                ['@babel/preset-env', { modules: false }]
               ],
-              'plugins': ['transform-runtime', 'transform-es2015-modules-commonjs'],
             }
           }],
           include: [resolve('src'), resolve('test')]
+        },
+        {
+          test: /\.scss$/,
+          use: [require.resolve('vue-style-loader'), require.resolve('css-loader'), require.resolve('sass-loader')],
         }
       ]
     },
 
     plugins: [
-        new webpack.BannerPlugin(banner)
+        new webpack.BannerPlugin(banner),
+        new VueLoaderPlugin()
     ]
 }
