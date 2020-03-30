@@ -64,6 +64,8 @@ For a more complex layout use the **scoped slot**
 | accept | Closes the cookie disclaimer and saves to localStorage |
 | close | Only closes the cookie disclaimer. The disclaimer will reappear on the next page load. |
 | open | Show disclaimer if user ignored him |
+| revoke | Revoke previous user decision |
+| isAccepted | To check anytime if cookies has been accepted |
 
 ## Props
 | prop | default | type | description

@@ -145,6 +145,11 @@
         this.isOpen = true
       }
     },
+    mounted () {
+      if (this.isAccepted() === true) {
+        this.$emit('accept')
+      }
+    },
     methods: {
       setVisited () {
         if (this.canUseLocalStorage) {
@@ -168,11 +173,32 @@
         }
       },
       getVisited () {
+        let visited = false
         if (this.canUseLocalStorage) {
-          return localStorage.getItem(this.storageName)
+          visited = localStorage.getItem(this.storageName)
         } else {
-          return Cookie.get(this.storageName)
+          visited = Cookie.get(this.storageName)
         }
+
+        if (typeof visited === 'string') {
+          visited = JSON.parse(visited)
+        }
+
+        return visited
+      },
+      isAccepted () {
+        let accepted = false
+        if (this.canUseLocalStorage) {
+          accepted = localStorage.getItem('cookie:all')
+        } else {
+          accepted = Cookie.get('cookie:all')
+        }
+
+        if (typeof accepted === 'string') {
+          accepted = JSON.parse(accepted)
+        }
+
+        return accepted
       },
       accept () {
         this.setVisited()
@@ -189,6 +215,15 @@
         this.setDeclined()
         this.isOpen = false
         this.$emit('decline')
+      },
+      revoke () {
+        if (this.canUseLocalStorage) {
+          localStorage.removeItem(this.storageName)
+        } else {
+          Cookie.remove(this.storageName)
+        }
+        this.isOpen = true
+        this.$emit('revoke')
       },
       open () {
         if (!this.getVisited() === true) {

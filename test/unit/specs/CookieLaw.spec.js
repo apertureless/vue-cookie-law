@@ -1,8 +1,9 @@
-import { mount } from "vue-test-utils";
+import { mount } from 'vue-test-utils'
 import CookieLaw from '@/components/CookieLaw'
 
 let mockGetCookie = jest.fn();
 let mockSetCookie = jest.fn();
+let mockRemoveCookie = jest.fn();
 
 jest.mock('tiny-cookie', () => ({
   __esModule: true, // mock the exports
@@ -12,6 +13,9 @@ jest.mock('tiny-cookie', () => ({
     get: jest.fn().mockImplementation((...args) => {
         mockGetCookie(...args);
     }),
+    remove: jest.fn().mockImplementation((...args) => {
+      mockRemoveCookie(...args);
+    }),
 }));
 
 describe('CookieLaw.vue', () => {
@@ -19,6 +23,17 @@ describe('CookieLaw.vue', () => {
     const wrapper = mount(CookieLaw)
     expect(wrapper.find('.Cookie__content').text())
       .toEqual('This website uses cookies to ensure you get the best experience on our website.')
+  })
+
+  it('should call "isAccepted" method when mount ', async () => {
+    const mockFn = jest.fn();
+    mount(CookieLaw, {
+      methods: {
+        isAccepted: mockFn
+      }
+    })
+
+    expect(mockFn).toHaveBeenCalled()
   })
 
   it('should set localstorage when clicking confirm button', () => {
@@ -55,6 +70,7 @@ describe('CookieLaw.vue', () => {
     wrapper.find('.Cookie__button').trigger('click')
 
     expect(mockSetCookie).toHaveBeenCalledWith('cookie:accepted', true, {"expires": "1Y"});
+
   })
 
   it('should set cookie when domain prop set', () => {
@@ -116,4 +132,61 @@ describe('CookieLaw.vue', () => {
 
     expect(wrapper.html()).toBe(undefined)
   });
+
+  it('should trigger "accept" event when mounted if cookie has been already acccepted ', async () => {
+    localStorage.setItem('cookie:all', 'true')
+
+    const wrapper = mount(CookieLaw)
+
+    expect(wrapper.emitted()).toHaveProperty('accept')
+
+    localStorage.clear()
+  })
+
+  it('should NOT trigger "accept" event when mounted if cookie has not been already accepted ', async () => {
+    const wrapper = mount(CookieLaw)
+
+    console.log(wrapper.emitted())
+
+    expect(wrapper.emitted()).not.toHaveProperty('accept')
+
+    localStorage.clear()
+  })
+
+  it('should trigger "revoke" event and remove previous user choice if revoke() method is called', async () => {
+    const storageName = 'cookie:test'
+    localStorage.setItem(storageName, 'true')
+
+    const wrapper = mount(CookieLaw, {
+      propsData: {
+        storageName: storageName
+      }
+    })
+
+    wrapper.vm.revoke()
+
+    expect(wrapper.emitted()).toHaveProperty('revoke')
+    expect(localStorage.getItem(storageName)).toBeNull()
+
+    localStorage.clear()
+  })
+
+  it('should trigger "revoke" event and remove previous user choice if revoke() method is called (using COOKIE)', async () => {
+    const storageName = 'cookie:test'
+    localStorage.setItem(storageName, 'true')
+
+    const wrapper = mount(CookieLaw, {
+      propsData: {
+        storageName: storageName,
+        storageType: 'cookies'
+      }
+    })
+
+    wrapper.vm.revoke()
+
+    expect(wrapper.emitted()).toHaveProperty('revoke')
+    expect(mockRemoveCookie).toHaveBeenCalled();
+
+    localStorage.clear()
+  })
 })
