@@ -149,11 +149,7 @@ describe('CookieLaw.vue', () => {
 
   it('should NOT trigger "accept" event when mounted if cookie has not been already accepted ', async () => {
     const wrapper = mount(CookieLaw)
-
-    console.log(wrapper.emitted())
-
     expect(wrapper.emitted()).not.toHaveProperty('accept')
-
     localStorage.clear()
   })
 
