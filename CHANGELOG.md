@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/apertureless/vue-cookie-law/compare/v1.13.0...v1.13.1) (2020-03-31)
+
+
+### Bug Fixes
+
+* Remove hardcoded cookie value with prop ([cae876a](https://github.com/apertureless/vue-cookie-law/commit/cae876a55a4a853ae0f057c5c8d5e95ae112e708))
+
 ## [1.13.0](https://github.com/apertureless/vue-cookie-law/compare/v1.12.0...v1.13.0) (2020-03-30)
 
 
