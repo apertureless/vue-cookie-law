@@ -85,7 +85,7 @@
       },
       buttonDeclineClass: {
         type: String,
-        default: 'Cookie__declineButton'
+        default: 'Cookie__button--decline'
       },
       storageName: {
         type: String,
@@ -160,16 +160,16 @@
       },
       setAccepted () {
         if (this.canUseLocalStorage) {
-          localStorage.setItem('cookie:all', true)
+          localStorage.setItem(this.storageName, true)
         } else {
-          Cookie.set('cookie:all', true, { ...this.cookieOptions, expires: '1Y' })
+          Cookie.set(this.storageName, true, { ...this.cookieOptions, expires: '1Y' })
         }
       },
       setDeclined () {
         if (this.canUseLocalStorage) {
-          localStorage.setItem('cookie:all', false)
+          localStorage.setItem(this.storageName, false)
         } else {
-          Cookie.set('cookie:all', false, { ...this.cookieOptions, expires: '1Y' })
+          Cookie.set(this.storageName, false, { ...this.cookieOptions, expires: '1Y' })
         }
       },
       getVisited () {
@@ -189,9 +189,9 @@
       isAccepted () {
         let accepted = false
         if (this.canUseLocalStorage) {
-          accepted = localStorage.getItem('cookie:all')
+          accepted = localStorage.getItem(this.storageName)
         } else {
-          accepted = Cookie.get('cookie:all')
+          accepted = Cookie.get(this.storageName)
         }
 
         if (typeof accepted === 'string') {
@@ -318,7 +318,7 @@
             background: darken($buttonBackgroundColor, 10%);
           }
       }
-      .Cookie__declineButton {
+      .Cookie__button--decline {
           background: transparent;
           padding: 0.625em 3.125em;
           color: darken($backgroundColor, 50%);
@@ -361,7 +361,7 @@
   .slideFromBottom-enter-active,
   .slideFromBottom-leave-active,
   .slideFromTop-enter-active,
-  .slideFromTop-leave-active, {
+  .slideFromTop-leave-active {
     transition: transform .4s ease-in;
   }
 
