@@ -112,10 +112,10 @@ describe('CookieLaw.vue', () => {
   it('should decline when buttonDecline is set and clicked', async () => {
     const wrapper = mount(CookieLaw, { propsData: { buttonDecline: true, buttonDeclineText: 'decline' } })
 
-    expect(wrapper.find('.Cookie__declineButton').exists()).toBe(true);
-    expect(wrapper.find('.Cookie__declineButton').text()).toEqual('decline')
+    expect(wrapper.find('.Cookie__button--decline').exists()).toBe(true);
+    expect(wrapper.find('.Cookie__button--decline').text()).toEqual('decline')
 
-    wrapper.find('.Cookie__declineButton').trigger('click')
+    wrapper.find('.Cookie__button--decline').trigger('click')
     await wrapper.vm.$nextTick()
 
     expect(wrapper.html()).toBe(undefined)
@@ -124,17 +124,17 @@ describe('CookieLaw.vue', () => {
   it('should decline when buttonDecline is set and clicked + using cookie', async () => {
     const wrapper = mount(CookieLaw, { propsData: { buttonDecline: true, buttonDeclineText: 'decline', storageType: 'cookies' } })
 
-    expect(wrapper.find('.Cookie__declineButton').exists()).toBe(true);
-    expect(wrapper.find('.Cookie__declineButton').text()).toEqual('decline')
+    expect(wrapper.find('.Cookie__button--decline').exists()).toBe(true);
+    expect(wrapper.find('.Cookie__button--decline').text()).toEqual('decline')
 
-    wrapper.find('.Cookie__declineButton').trigger('click')
+    wrapper.find('.Cookie__button--decline').trigger('click')
     await wrapper.vm.$nextTick()
 
     expect(wrapper.html()).toBe(undefined)
   });
 
   it('should trigger "accept" event when mounted if cookie has been already acccepted ', async () => {
-    localStorage.setItem('cookie:all', 'true')
+    localStorage.setItem('cookie:accepted', 'true')
 
     const wrapper = mount(CookieLaw)
 
