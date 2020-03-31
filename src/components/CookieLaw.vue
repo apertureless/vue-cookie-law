@@ -141,12 +141,12 @@
         }
       }
 
-      if (!this.getVisited() === true) {
+      if (!this.getVisited()) {
         this.isOpen = true
       }
     },
     mounted () {
-      if (this.isAccepted() === true) {
+      if (this.isAccepted()) {
         this.$emit('accept')
       }
     },
@@ -183,8 +183,7 @@
         if (typeof visited === 'string') {
           visited = JSON.parse(visited)
         }
-
-        return visited
+        return !(visited === null || visited === undefined)
       },
       isAccepted () {
         let accepted = false
@@ -226,7 +225,7 @@
         this.$emit('revoke')
       },
       open () {
-        if (!this.getVisited() === true) {
+        if (!this.getVisited()) {
           this.isOpen = true
         }
       }

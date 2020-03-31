@@ -19,6 +19,10 @@ jest.mock('tiny-cookie', () => ({
 }));
 
 describe('CookieLaw.vue', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
   it('should render correct contents', () => {
     const wrapper = mount(CookieLaw)
     expect(wrapper.find('.Cookie__content').text())

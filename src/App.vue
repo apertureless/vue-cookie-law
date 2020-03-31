@@ -13,13 +13,13 @@
     <cookie-law :theme="theme" position="top" transition-name="fade"></cookie-law>
     <cookie-law :theme="theme">
       <div slot-scope="props" class="container">
-
-        <button class="Cookie__button" @click="props.accept"><span>I accept</span></button>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, hic?
         </p>
 
+        <button class="Cookie__button" @click="props.accept"><span>I accept</span></button>
         <button class="Cookie__button" @click="props.close"><span>Close</span></button>
+        <button class="Cookie__button" @click="props.decline"><span>Decline</span></button>
       </div>
 
     </cookie-law>
