@@ -132,9 +132,10 @@
         // Check for availability of localStorage
         try {
           const test = '__vue-cookielaw-check-localStorage'
-
-          window.localStorage.setItem(test, test)
-          window.localStorage.removeItem(test)
+          if (typeof window !== 'undefined') {
+            window.localStorage.setItem(test, test)
+            window.localStorage.removeItem(test)
+          }
         } catch (e) {
           console.info('Local storage is not supported, falling back to cookie use')
           this.supportsLocalStorage = false

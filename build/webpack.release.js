@@ -30,6 +30,7 @@ module.exports = {
         filename: 'vue-cookie-law.js',
         library: 'CookieLaw',
         libraryTarget: 'umd',
+        globalObject: 'this',
         umdNamedDefine: true
     },
     resolve: {
