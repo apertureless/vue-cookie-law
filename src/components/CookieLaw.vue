@@ -156,21 +156,21 @@
         if (this.canUseLocalStorage) {
           localStorage.setItem(this.storageName, true)
         } else {
-          Cookie.set(this.storageName, true, { ...this.cookieOptions, expires: '1Y' })
+          Cookie.set(this.storageName, true, { expires: '1Y', ...this.cookieOptions })
         }
       },
       setAccepted () {
         if (this.canUseLocalStorage) {
           localStorage.setItem(this.storageName, true)
         } else {
-          Cookie.set(this.storageName, true, { ...this.cookieOptions, expires: '1Y' })
+          Cookie.set(this.storageName, true, { expires: '1Y', ...this.cookieOptions })
         }
       },
       setDeclined () {
         if (this.canUseLocalStorage) {
           localStorage.setItem(this.storageName, false)
         } else {
-          Cookie.set(this.storageName, false, { ...this.cookieOptions, expires: '1Y' })
+          Cookie.set(this.storageName, false, { expires: '1Y', ...this.cookieOptions })
         }
       },
       getVisited () {
