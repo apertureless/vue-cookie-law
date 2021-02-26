@@ -26,6 +26,7 @@ EU Cookie Law Plugin for Vue.js
 
 <script>
   import CookieLaw from 'vue-cookie-law'
+  import 'vue-cookie-law/dist/main.css'
   export default {
     components: { CookieLaw }
   }
