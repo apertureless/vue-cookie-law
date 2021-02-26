@@ -3,11 +3,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const npmCfg = require('../package.json');
-const projectRoot = path.resolve(__dirname, '../');
-var vueLoaderConfig = require('./vue-loader.conf');
+const vueLoaderConfig = require('./vue-loader.conf');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-var utils = require('./utils');
-var config = require('../config')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -57,13 +55,14 @@ module.exports = {
         },
         {
           test: /\.scss$/,
-          use: [require.resolve('vue-style-loader'), require.resolve('css-loader'), require.resolve('sass-loader')],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         }
       ]
     },
 
     plugins: [
         new webpack.BannerPlugin(banner),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new MiniCssExtractPlugin()
     ]
 }
